@@ -1,0 +1,175 @@
+datasource DS {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = env("BINARY_TARGET")
+}
+
+// Define your own datamodels here and run `yarn redwood db save` to create
+// migrations for them.
+model Address {
+  id                        Int           @id @default(autoincrement())
+  street1                   String
+  street2                   String?
+  city                      String
+  state                     String
+  country                   String
+  zipcode                   String
+  clubChapterMailingAddress ClubChapter[] @relation("MailingAddress")
+  clubChapterViewingAddress ClubChapter[] @relation("ViewingAddress")
+  User                      User[]        @relation("UserAddress")
+}
+
+model RoleType {
+  id   Int    @id @default(autoincrement())
+  name String
+  Role Role[]
+}
+
+model Role {
+  id           Int         @id @default(autoincrement())
+  name         String
+  roleTypeId   Int
+  roleType     RoleType    @relation(fields: [roleTypeId])
+  clubChaperId Int
+  clubChapter  ClubChapter @relation(fields: [clubChaperId])
+  User         User?       @relation(fields: [userId], references: [id])
+  userId       Int?
+}
+
+model Media {
+  id             Int           @id @default(autoincrement())
+  filename       String
+  filetype       String
+  description    String?
+  createdAt      DateTime      @default(now())
+  createdById    Int
+  updatedAt      DateTime?     @default(now())
+  updatedById    Int?
+  ClubChapter    ClubChapter[]
+  Club           Club[]
+  User           User[]
+  PhotoGallery   PhotoGallery? @relation(fields: [photoGalleryId], references: [id])
+  photoGalleryId Int?
+  Post           Post[]
+}
+
+model PhotoGallery {
+  id              Int         @id @default(autoincrement())
+  name            String
+  description     String
+  media           Media[]
+  active          Boolean     @default(true)
+  deactivatedAt   DateTime
+  deactivatedById Int?
+  clubChapterId   Int
+  clubChapter     ClubChapter @relation(fields: [clubChapterId])
+  createdAt       DateTime    @default(now())
+  createdById     Int
+  updatedAt       DateTime?   @default(now())
+  updatedById     Int?
+  Post            Post[]
+}
+
+model Club {
+  id          Int           @id @default(autoincrement())
+  email       String        @unique
+  name        String
+  logoId      Int?
+  logo        Media?        @relation(fields: [logoId])
+  league      String
+  createdAt   DateTime      @default(now())
+  createdById Int
+  updatedAt   DateTime?     @default(now())
+  updatedById Int?
+  ClubChapter ClubChapter[]
+}
+
+model Officer {
+  id            Int          @id @default(autoincrement())
+  userId        Int
+  user          User         @relation(fields: [userId])
+  title         String?
+  createdAt     DateTime     @default(now())
+  createdById   Int
+  updatedAt     DateTime?    @default(now())
+  updatedById   Int?
+  ClubChapter   ClubChapter? @relation(fields: [clubChapterId], references: [id])
+  clubChapterId Int?
+}
+
+model ClubChapter {
+  id               Int            @id @default(autoincrement())
+  email            String         @unique
+  name             String
+  clubId           Int
+  club             Club           @relation(fields: [clubId])
+  logoId           Int?
+  logo             Media?         @relation(fields: [logoId])
+  mailAddressId    Int?
+  mailAddress      Address?       @relation("MailingAddress", fields: [mailAddressId])
+  viewingAddressId Int?
+  viewingAddress   Address?       @relation("ViewingAddress", fields: [viewingAddressId])
+  phone            String?
+  facebook         String?
+  twitter          String?
+  instagram        String?
+  active           Boolean        @default(true)
+  deactivatedAt    DateTime
+  deactivatedById  Int?
+  createdAt        DateTime       @default(now())
+  createdById      Int
+  updatedAt        DateTime?      @default(now())
+  updatedById      Int?
+  photoGalleries   PhotoGallery[]
+  officers         Officer[]
+  Role             Role[]
+  members          User[]
+  Post             Post[]
+}
+
+model User {
+  id               Int         @id @default(autoincrement())
+  email            String      @unique
+  firstName        String
+  lastName         String
+  displayName      String?
+  joinedAt         DateTime
+  clubMembershipId String?
+  active           Boolean     @default(true)
+  deactivatedAt    DateTime
+  deactivatedById  Int?
+  clubChapterId    Int
+  clubChapter      ClubChapter @relation(fields: [clubChapterId])
+  addressId        Int?
+  address          Address?    @relation("UserAddress", fields: [addressId])
+  phone            String?
+  imageId          Int?
+  image            Media?      @relation(fields: [imageId])
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @default(now())
+  roles            Role[]
+  Officer          Officer[]
+  Post             Post[]
+}
+
+model Post {
+  id             Int           @id @default(autoincrement())
+  title          String
+  contentBody    String
+  authorId       Int
+  author         User          @relation(fields: [authorId])
+  mediaId        Int?
+  media          Media?        @relation(fields: [mediaId])
+  photoGalleryId Int?
+  photoGallery   PhotoGallery? @relation(fields: [photoGalleryId])
+  ClubChapter    ClubChapter?  @relation(fields: [clubChapterId], references: [id])
+  clubChapterId  Int?
+  createdAt      DateTime      @default(now())
+  createdById    Int
+  updatedAt      DateTime?     @default(now())
+  updatedById    Int?
+}
