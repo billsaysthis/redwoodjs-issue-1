@@ -19,7 +19,8 @@ export const schema = gql`
   }
 
   type Query {
-    media: [Media!]!
+    medias: [Media!]!
+    media(id: Int!): Media!
   }
 
   input CreateMediaInput {
