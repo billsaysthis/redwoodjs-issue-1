@@ -1,6 +1,6 @@
 datasource DS {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -85,7 +85,7 @@ model Club {
   createdById Int
   updatedAt   DateTime?     @default(now())
   updatedById Int?
-  clubChapters ClubChapter[]
+  clubChapter ClubChapter[]
 }
 
 model Officer {

@@ -4,7 +4,7 @@ export const schema = gql`
   type RoleType {
     id: Int!
     name: String!
-    Role: Role[]
+    roles: [Role]
   }
 
   type Query {

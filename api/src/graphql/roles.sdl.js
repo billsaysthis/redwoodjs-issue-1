@@ -8,7 +8,7 @@ export const schema = gql`
     roleType: RoleType!
     clubChaperId: Int!
     clubChapter: ClubChapter!
-    User: User
+    user: User
     userId: Int
   }
 
