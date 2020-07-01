@@ -1,0 +1,508 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "Address",
+      "field": "user",
+      "type": "User",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Address",
+          "field": "user"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Address",
+          "field": "user"
+        },
+        "directive": "relation"
+      },
+      "argument": "",
+      "value": "\"UserAddress\""
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Address",
+      "field": "User"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Address",
+      "field": "clubChapterMailingAddress",
+      "arity": "Required"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Address",
+      "field": "clubChapterViewingAddress",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "RoleType",
+      "field": "roles",
+      "type": "Role",
+      "arity": "List"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "RoleType",
+      "field": "Role"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Role",
+      "field": "user",
+      "type": "User",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Role",
+          "field": "user"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Role",
+          "field": "user"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "value": "[userId]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Role",
+          "field": "user"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Role",
+      "field": "User"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Role",
+          "field": "clubChapter"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Media",
+      "field": "clubChapter",
+      "type": "ClubChapter",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Media",
+      "field": "club",
+      "type": "Club",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Media",
+      "field": "user",
+      "type": "User",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Media",
+      "field": "photoGallery",
+      "type": "PhotoGallery",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Media",
+          "field": "photoGallery"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Media",
+          "field": "photoGallery"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "value": "[photoGalleryId]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Media",
+          "field": "photoGallery"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Media",
+      "field": "post",
+      "type": "Post",
+      "arity": "Required"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Media",
+      "field": "ClubChapter"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Media",
+      "field": "Club"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Media",
+      "field": "User"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Media",
+      "field": "PhotoGallery"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Media",
+      "field": "Post"
+    },
+    {
+      "tag": "CreateField",
+      "model": "PhotoGallery",
+      "field": "post",
+      "type": "Post",
+      "arity": "Required"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "PhotoGallery",
+      "field": "Post"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Club",
+      "field": "clubChapter",
+      "type": "ClubChapter",
+      "arity": "List"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Club",
+      "field": "ClubChapter"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Officer",
+      "field": "clubChapter",
+      "type": "ClubChapter",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Officer",
+          "field": "clubChapter"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Officer",
+          "field": "clubChapter"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "value": "[clubChapterId]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Officer",
+          "field": "clubChapter"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Officer",
+      "field": "ClubChapter"
+    },
+    {
+      "tag": "CreateField",
+      "model": "ClubChapter",
+      "field": "role",
+      "type": "Role",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "ClubChapter",
+      "field": "post",
+      "type": "Post",
+      "arity": "Required"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "ClubChapter",
+      "field": "Role"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "ClubChapter",
+      "field": "Post"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "ClubChapter",
+          "field": "mailAddress"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "ClubChapter",
+          "field": "viewingAddress"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "ClubChapter",
+      "field": "members",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "officers",
+      "type": "Officer",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "posts",
+      "type": "Post",
+      "arity": "List"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Officer"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "User",
+      "field": "Post"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "clubChapter"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "address"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "image"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Post",
+      "field": "clubChapter",
+      "type": "ClubChapter",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Post",
+          "field": "clubChapter"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Post",
+          "field": "clubChapter"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "value": "[clubChapterId]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Post",
+          "field": "clubChapter"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Post",
+      "field": "ClubChapter"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Post",
+          "field": "media"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Post",
+          "field": "photoGallery"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    }
+  ]
+}

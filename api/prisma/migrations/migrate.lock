@@ -1,3 +1,4 @@
 # Prisma Migrate lockfile v1
 
 20200629144603-create-base-table-set
+20200630204616-fix-syntax
