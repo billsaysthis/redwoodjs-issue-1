@@ -1,0 +1,26 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateArgument",
+      "location": {
+        "tag": "Source",
+        "source": "DS"
+      },
+      "argument": "provider",
+      "newValue": "\"postgresql\""
+    },
+    {
+      "tag": "CreateField",
+      "model": "Club",
+      "field": "clubChapters",
+      "type": "ClubChapter",
+      "arity": "List"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Club",
+      "field": "clubChapter"
+    }
+  ]
+}
